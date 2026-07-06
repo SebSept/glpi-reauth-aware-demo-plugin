@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GlpiPlugin\Reauthdemo;
 
-use Glpi\Security\ReAuth\ReAuthStrategyInterface;
+use Glpi\Security\ReAuth\InPlaceReAuthStrategy;
 use Override;
 
 /**
@@ -14,7 +14,7 @@ use Override;
  * secret. A real strategy would delegate to an external provider or a
  * per-user credential.
  */
-class ReAuthProvider implements ReAuthStrategyInterface
+class ReAuthProvider extends InPlaceReAuthStrategy
 {
     /**
      * Demo secret expected by verify(). Replace with a real verification in
