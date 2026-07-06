@@ -1,0 +1,16 @@
+{#
+ # ReAuth Demo plugin — re-authentication input.
+ #
+ # Rendered inside the core form of templates/pages/reauth/prompt.html.twig via
+ # {% include template %}. Only the input field is provided here; the <form>,
+ # the hidden "redirect" field and the Cancel/Verify buttons come from the core
+ # template. The field MUST be named "user_input" (read by ReAuthController).
+ #}
+
+<p class="text-muted mb-2">{{ __('Enter the demo re-authentication code', 'reauthdemo') }}</p>
+<input type="text"
+       name="user_input"
+       class="form-control"
+       required
+       autofocus
+       autocomplete="off" />
