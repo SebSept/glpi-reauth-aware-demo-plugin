@@ -6,6 +6,7 @@ namespace GlpiPlugin\Reauthdemo;
 
 use Glpi\Security\ReAuth\InPlaceReAuthStrategy;
 use Override;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Minimal re-authentication strategy provided by the reauthdemo plugin.
@@ -22,9 +23,16 @@ class ReAuthProvider extends InPlaceReAuthStrategy
      */
     private const DEMO_SECRET = '1234';
 
+    /**
+     * The whole prompt form submission is passed, so a real strategy is free to read as
+     * many fields as its verification needs. This demo only needs the single `user_input`
+     * field rendered by its prompt template.
+     */
     #[Override]
-    public function verify(int $users_id, string $user_input): bool
+    public function verify(int $users_id, Request $request): bool
     {
+        $user_input = (string) $request->request->get('user_input', '');
+
         return hash_equals(self::DEMO_SECRET, $user_input);
     }
 

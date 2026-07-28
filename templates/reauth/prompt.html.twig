@@ -3,8 +3,11 @@
  #
  # Rendered inside the core form of templates/pages/reauth/prompt.html.twig via
  # {% include template %}. Only the input field is provided here; the <form>
- # and the Cancel/Verify buttons come from the core template. The field MUST be
- # named "user_input" (read by ReAuthController).
+ # and the Cancel/Verify buttons come from the core template.
+ #
+ # The whole submission is handed to ReAuthProvider::verify(), so the field names
+ # are the plugin's own choice: add as many as the verification needs. This demo
+ # sticks to "user_input", the name used by the core prompt templates.
  #}
 
 <p class="text-muted mb-2">{{ __('Enter the demo re-authentication code', 'reauthdemo') }}</p>
